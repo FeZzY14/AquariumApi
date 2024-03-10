@@ -1,0 +1,8 @@
+.custom-card {
+    padding: 15px;
+}
+
+.custom-card:hover {
+    transform: scale(1.05);
+}
+
