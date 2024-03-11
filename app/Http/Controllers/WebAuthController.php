@@ -85,7 +85,7 @@ class WebAuthController extends Controller
 
         $body = json_decode($response->getContent(), true);
 
-        if ($response->status() != 200) {
+        if ($response->status() != 201) {
             return redirect(config('app.url').'/register')->with("error", $body['message']);
         }
 
