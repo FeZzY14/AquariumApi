@@ -20,7 +20,7 @@ class Aquarium extends Model
 
     public $timestamps = false;
 
-    protected $table = 'Aquarium';
+    protected $table = 'aquarium';
 
     /**
      * Get all of the Sensors for the Aquarium

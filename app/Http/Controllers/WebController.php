@@ -20,6 +20,9 @@ class WebController extends Controller
 
 
             $body = json_decode($response->getContent(), true);
+
+
+
             $aquariums = $body["data"];
 
             return view('home',

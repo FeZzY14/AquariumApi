@@ -19,7 +19,7 @@ class Sensor extends Model
         'serialNum', 'aquariumId', 'sensor_type', 'senName',
     ];
 
-    protected $table = 'Sensor';
+    protected $table = 'sensor';
 
     protected $primaryKey = 'serialNum';
     protected $keyType = 'string';

@@ -23,7 +23,7 @@ class Measurement extends Model
 
     public $timestamps = false;
 
-    protected $table = 'Measurement';
+    protected $table = 'measurement';
 
     /**
      * Get the sensor that owns the Measurement
