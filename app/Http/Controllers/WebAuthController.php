@@ -14,7 +14,7 @@ class WebAuthController extends Controller
 {
     public function login() {
         if (Session::has('token')) {
-            return redirect('/home');
+            return redirect(env('APP_URL', 'http://localhost:8000').'/home');
         }
 
         return view('login');
@@ -37,11 +37,11 @@ class WebAuthController extends Controller
         $body = json_decode($response->getContent(), true);
 
         if ($response->status() != 200) {
-            return redirect('/login')->with("error", $body['message']);
+            return redirect(env('APP_URL', 'http://localhost:8000').'/login')->with("error", $body['message']);
         }
 
         session(['token' => $body['access_token']]);
-        return redirect('http://139.59.142.67/home')->with("success", "Successfully logged in");
+        return redirect(env('APP_URL', 'http://localhost:8000').'/home')->with("success", "Successfully logged in");
     }
 
     public function logout() {
@@ -53,12 +53,12 @@ class WebAuthController extends Controller
         $body = json_decode($response->getContent(), true);
         session()->flush();
 
-        return redirect('http://139.59.142.67/login')->with("error", $body['message']);
+        return redirect(env('APP_URL', 'http://localhost:8000').'/login')->with("error", $body['message']);
     }
 
     public function register() {
         if (Session::has('token')) {
-            return redirect('/home');
+            return redirect(env('APP_URL', 'http://localhost:8000').'/home');
         }
 
         return view('register');
@@ -80,10 +80,10 @@ class WebAuthController extends Controller
         $body = json_decode($response->getContent(), true);
 
         if ($response->status() != 200) {
-            return redirect('/register')->with("error", $body['message']);
+            return redirect(env('APP_URL', 'http://localhost:8000').'/register')->with("error", $body['message']);
         }
 
         session(['token' => $body['access_token']]);
-        return redirect('http://139.59.142.67/home')->with("success", "Successfully logged in");
+        return redirect(env('APP_URL', 'http://localhost:8000').'/home')->with("success", "Successfully logged in");
     }
 }

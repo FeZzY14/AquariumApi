@@ -31,7 +31,7 @@ class WebController extends Controller
             ]);
 
         } else {
-            return redirect('/login')->with("error", "Please login!");
+            return redirect(env('APP_URL', 'http://localhost:8000').'/login')->with("error", "Please login!");
         }
     }
 
@@ -52,7 +52,7 @@ class WebController extends Controller
             ]);
 
         } else {
-            return redirect('/login')->with("error", "Please login!");
+            return redirect(env('APP_URL', 'http://localhost:8000').'/login')->with("error", "Please login!");
         }
     }
 }
