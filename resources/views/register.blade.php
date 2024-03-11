@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Repeat password</label>
-                <input type="password" class="form-control" id="inputPasswordRepeat" name="password2" required>
+                <input type="password" class="form-control" id="inputPasswordRepeat" name="password_confirmation" required>
             </div>
             <div class="mb-3 form-check">
                 <div class="register-text">

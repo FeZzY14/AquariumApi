@@ -70,10 +70,15 @@ class WebAuthController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'password2' => 'required'
+            'password_confirmation' => 'required'
         ]);
 
-        $apiRequest = Request::create('/api/register', 'POST', $validated);
+        $apiRequest = Request::create('/api/register', 'POST', [
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+            'password_confirmation' => $validated['password_confirmation']
+        ]);
         $apiRequest->headers->set('Accept', 'application/json');
         $response = app()->handle($apiRequest);
 
