@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\WebAuthController;
+use Illuminate\Support\Facades\Config;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\WebAuthController;
 */
 
 Route::get('/', function () {
-    return redirect('/login')->with("error", "Please login!");
+    return redirect(config('app.url').'/login')->with("error", "Please login!");
 });
 
 Route::get('/home', [WebController::class, 'index'])->name('home');

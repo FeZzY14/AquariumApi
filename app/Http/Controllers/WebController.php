@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Routing\RouteUrlGenerator;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Config;
 
 class WebController extends Controller
 {
@@ -31,7 +35,7 @@ class WebController extends Controller
             ]);
 
         } else {
-            return redirect(env('APP_URL', 'http://localhost:8000').'/login')->with("error", "Please login!");
+            return redirect(config('app.url').'/login')->with("error", "Please login!");
         }
     }
 
@@ -52,7 +56,7 @@ class WebController extends Controller
             ]);
 
         } else {
-            return redirect(env('APP_URL', 'http://localhost:8000').'/login')->with("error", "Please login!");
+            return redirect(config('app.url').'/login')->with("error", "Please login!");
         }
     }
 }
