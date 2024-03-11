@@ -16,7 +16,7 @@ use App\Http\Controllers\WebAuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login')->with("error", "Please login!");
 });
 
 Route::get('/home', [WebController::class, 'index'])->name('home');
