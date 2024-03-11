@@ -41,7 +41,7 @@ class WebAuthController extends Controller
         }
 
         session(['token' => $body['access_token']]);
-        return redirect('/home')->with("success", "Successfully logged in");
+        return redirect('139.59.142.67/home')->with("success", "Successfully logged in");
     }
 
     public function logout() {
@@ -53,7 +53,7 @@ class WebAuthController extends Controller
         $body = json_decode($response->getContent(), true);
         session()->flush();
 
-        return redirect('/login')->with("error", $body['message']);
+        return redirect('139.59.142.67/login')->with("error", $body['message']);
     }
 
     public function register() {
@@ -84,6 +84,6 @@ class WebAuthController extends Controller
         }
 
         session(['token' => $body['access_token']]);
-        return redirect('/home')->with("success", "Successfully logged in");
+        return redirect('139.59.142.67/home')->with("success", "Successfully logged in");
     }
 }
