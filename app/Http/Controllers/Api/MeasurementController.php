@@ -11,6 +11,7 @@ use App\Http\Resources\MeasurementResource;
 use App\Http\Resources\MeasurementCollection;
 use Spatie\QueryBuilder\AllowedFilter;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class MeasurementController extends Controller
 {
@@ -50,10 +51,21 @@ class MeasurementController extends Controller
     public function store(StoreMeasurementRequest $request)
     {
         $validate = $request->validated();
+        $count = 0;
 
-        $measurement = Measurement::create($validate);
+        foreach ($validate["mes"] as $param) {
+            $measurement = Measurement::create($param);
+            $count++;
 
-        return new MeasurementResource($measurement);
+            if (Measurement::where('sensorNum', $param["sensorNum"])->orderBy('dataId')->count() >= 30) {
+                Measurement::where('sensorNum', $param["sensorNum"])->orderBy('dataId')->first()->delete();
+            }
+
+        }
+
+        $measurements = Measurement::orderBy('dataId', 'desc')->take($count)->get();
+
+        return MeasurementResource::collection($measurements);
     }
 
     /**

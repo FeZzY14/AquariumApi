@@ -15,7 +15,7 @@ class StoreMeasurementRequest extends FormRequest
     {
         if (DB::table('aquarium')->join('sensor', 'id', '=', 'sensor.aquariumId')
             ->where('user_id', Auth::id())
-            ->where('serialNum', $this->input('sensorNum'))
+            ->where('serialNum', $this->input('mes.*.sensorNum'))
             ->exists()) {
             return true;
         }
@@ -31,9 +31,9 @@ class StoreMeasurementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'value' => 'required',
-            'sensorNum' => 'required|max:255',
-            'time' => 'required',
+            'mes.*.value' => 'required',
+            'mes.*.sensorNum' => 'required|max:255',
+            'mes.*.time' => 'required',
         ];
     }
 }

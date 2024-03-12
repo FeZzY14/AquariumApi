@@ -35,9 +35,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for ($i = 0; $i < count($sensor['measurements']); $i++)
+                                @for ($i = count($sensor['measurements']) - 1; $i >= 0; $i--)
                                     <tr>
-                                        <th scope="row">{{ $i }}</th>
+                                        <th scope="row">{{ $i+1 }}</th>
                                         <td>{{ $sensor['measurements'][$i]['value'] }}</td>
                                         <td>{{ $sensor['measurements'][$i]['unit'] }}</td>
                                         <td>{{ $sensor['measurements'][$i]['time'] }}</td>
