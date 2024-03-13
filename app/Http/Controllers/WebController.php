@@ -27,7 +27,7 @@ class WebController extends Controller
 
 
 
-            $aquariums = $body["data"];
+            $aquariums = $body;
 
             return view('home',
             [
@@ -48,7 +48,7 @@ class WebController extends Controller
 
 
             $body = json_decode($response->getContent(), true);
-            $sensors = $body["data"];
+            $sensors = $body;
 
             return view('sensors',
             [
