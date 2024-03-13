@@ -21,7 +21,7 @@ class SensorResource extends JsonResource
             "aquariumId"=> $this->aquariumId,
             "sensor_type" => $this->sensor_type,
             "senName" => $this->senName,
-            "measurements" => MeasurementResource::collection($this->whenLoaded('measurements'))->sortByDesc('time')
+            "measurements" => MeasurementResource::collection($this->whenLoaded('measurements'))
         ];
     }
 }
